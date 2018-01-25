@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="flow.css"/>
+	</head>
+	<body>
+		<ul id="flow">
+			<li>
+				<p>卡类型：</p>
+				<a href="#">超级流量卡</a>
+			</li>
+			
+			<li >
+				<p class="clearfix">密码：<span style="float: right;" id="pass"><img src="images/flow_d.jpg"/></span></p>
+				<div class="password" >
+					<input type="password" placeholder="请输入密码" maxlength="3"/>-
+					<input type="password" placeholder="请输入密码" maxlength="3"/>-
+					<input type="password" placeholder="请输入密码" maxlength="3"/>
+				</div>
+				<div><span style="color: red;">*</span>密码不区分大小写</div>
+			</li>
+			<li>
+				<p class="clearfix">验证码：<span style="float: right;" id="security_z"><img src="images/flow_d.jpg"/></span></p>
+				<div class="security">
+					<input type="text" placeholder="请输入验证码"/>
+					<img src="images/yanzhengma.jpg"/>
+					<a href="#">换一张</a>
+				</div>
+			</li>
+			<li>
+				<a href="#" class="submit">立即充值</a>
+			</li>
+		</ul>
+		<div class="form_ok">
+			<p><img src="images/flow_dui.jpg"/></p>
+			<p>没有找到此卡信息<br />请重新输入卡密，谢谢</p>
+			<p><a href="#">确定</a></p>
+		</div>
+	</body>
+	<script src="jquery-1.8.3.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="rem.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		$(".password input").eq(0).keyup(function(){
+			console.log($(this).val().length)
+			if($(this).val().length==3){
+				$(".password input").eq(1).focus()
+			}
+		})
+		$(".password input").eq(1).keyup(function(){
+			if($(this).val().length==3){
+				$(".password input").eq(2).focus()
+			}
+		})
+		$(".password input").eq(2).keyup(function(){
+			if($(this).val().length==3){
+				/*判断密码**/
+				
+			}
+		})
+		
+		/*密码**/
+		$("#pass").html('<img src="images/gantan.jpg"/>密码输入有误请重新输入')
+		$("#pass").html("<img src='images/flow_d.jpg'/>")
+		
+		/*验证码**/
+		$("#security_z").html("<img src='images/flow_d.jpg'/>")
+		$("#security_z").html('<img src="images/gantan.jpg"/>验证码输入有误请重新输入')
+		
+		/**弹出框*/
+//		$(".form_ok").css("display","flex")
+		$(".form_ok p").eq(0).find("img").attr("src","images/flow_dui.jpg")
+		$(".form_ok p").eq(0).find("img").attr("src","images//flow_wang.jpg")
+		$(".form_ok p").eq(1).html("没有找到此卡信息<br/>请重新输入卡密，谢谢！")
+		$(".form_ok p").eq(1).html("网络连接错误<br/>...")
+		$(".form_ok p").eq(1).html("充值成功！")
+		$(".form_ok p").eq(2).find("a").html("确定")
+		$(".form_ok p").eq(2).find("a").html("重新加载")
+	</script>
+</html>
